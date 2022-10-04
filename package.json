@@ -1,0 +1,28 @@
+{
+  "name": "cms",
+  "version": "1.0.0",
+  "description": "content for daily tech thinking",
+  "main": "./src/index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config bin/serve.js",
+    "prod": "node -r dotenv/config bin/serve.js"
+  },
+  "keywords": [
+    "cms"
+  ],
+  "author": "AlexChing",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^20.2.2",
+    "@hapi/inert": "^7.0.0",
+    "@hapi/vision": "^7.0.0",
+    "dotenv": "^16.0.3",
+    "hapi-swagger": "^14.5.5",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.23.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.5.1"
+  }
+}
