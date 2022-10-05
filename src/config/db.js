@@ -1,4 +1,6 @@
-const { env } = proces
+require('dotenv').config()
+
+const { env } = process
 
 module.exports = {
   username: env.MYSQL_USERNAME,

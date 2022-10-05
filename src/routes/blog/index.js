@@ -1,13 +1,16 @@
 const handler = require('./handler')
 
+const GROUP = 'blog'
+
 module.exports = [
     {
         method: 'GET',
-        path: '/test',
-        options: {
-            description: 'this is a test route',
-            handler: handler,
-            tags: ['api', 'Test']
+        path: `/${GROUP}`,
+        handler: handler,
+        config: {
+            auth: false,
+            description: 'get all blogs',
+            tags: ['api', GROUP]
         }
     }
 ]

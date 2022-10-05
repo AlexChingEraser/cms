@@ -1,18 +1,26 @@
 'use strict';
 const Hapi = require('@hapi/hapi');
-const routers = require('./routes')
+const jwtPlugin = require('hapi-auth-jwt2')
+
 const swaggerPlugin = require('./plugins/swagger')
+const routers = require('./routes')
+const jwtValidate = require('./plugins/jwt')
+
+const { host, port } = require('./config')
 
 const init = async() => {
     const server = Hapi.server({
-        port: 3000,
-        host: 'localhost'
+        port: port,
+        host: host
     });
     
+    await server.register([
+        jwtPlugin,
+        ...swaggerPlugin
+    ])
+    jwtValidate(server)
     server.route(routers);
-
-    await server.register(swaggerPlugin)
-
+    
     await server.start();
     console.log('Server running on %s', server.info.uri);
 };
